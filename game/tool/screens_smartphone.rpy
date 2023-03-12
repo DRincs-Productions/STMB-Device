@@ -11,7 +11,7 @@ screen smartphone():
     modal True
     style_prefix "game_menu"
 
-    image "/interface/background00.webp":
+    image "/interface/smartphone_background00.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width-40, gui.smartphone_height-40)
 
@@ -22,7 +22,7 @@ screen smartphone():
     # button for closure
     imagebutton:
         align (0.67, 0.18)
-        idle '/interface/button_smartphone/shutdown.webp'
+        idle '/interface/button/shutdown.webp'
         action [
             Hide('smartphone'),
         ]
