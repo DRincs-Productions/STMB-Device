@@ -1,3 +1,5 @@
+define gui.smartphone_height = 1080
+define gui.smartphone_width = 570
 
 screen smartphone():
 
@@ -11,11 +13,11 @@ screen smartphone():
 
     image "/interface/background00.webp":
         align (0.5, 0.5)
-        size (570, 1070)
+        size (gui.smartphone_width-40, gui.smartphone_height-40)
 
     image "/interface/smartphone.webp":
         align (0.5, 0.5)
-        size (600, 1080)
+        size (gui.smartphone_width, gui.smartphone_height)
 
     # button for closure
     imagebutton:
