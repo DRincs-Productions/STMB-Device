@@ -24,10 +24,10 @@ screen smartphone():
         align (0.67, 0.18)
         idle '/interface/button_smartphone/shutdown.webp'
         action [
-            Hide('menu_userinfo'),
+            Hide('smartphone'),
         ]
         focus_mask True
         at close_smartphone
 
-    key 'K_ESCAPE' action Hide('menu_userinfo')
-    key 'mouseup_3' action Hide('menu_userinfo')
+    key 'K_ESCAPE' action Hide('smartphone')
+    key 'mouseup_3' action Hide('smartphone')
