@@ -9,6 +9,10 @@ screen smartphone():
     modal True
     style_prefix "game_menu"
 
+    image "/interface/background00.webp":
+        align (0.5, 0.5)
+        size (570, 1070)
+
     image "/interface/smartphone.webp":
         align (0.5, 0.5)
         size (600, 1080)
