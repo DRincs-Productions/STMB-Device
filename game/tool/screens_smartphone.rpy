@@ -2,6 +2,8 @@ define gui.smartphone_height = 1080
 define gui.smartphone_width = 570
 define gui.smartphone_column_app_number = 4
 
+default smartphone_current_app = None 
+
 screen smartphone():
 
     tag menu
@@ -12,13 +14,20 @@ screen smartphone():
     modal True
     style_prefix "game_menu"
 
-    image "/interface/smartphone_background00.webp":
-        align (0.5, 0.5)
-        size (gui.smartphone_width-40, gui.smartphone_height-40)
+    if not smartphone_current_app or not smartphone_current_app.label_name:
+        use smartphone_home
+    else:
+        $ renpy.call(smartphone_current_app.label_name)
 
     image "/interface/smartphone.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width, gui.smartphone_height)
+
+screen smartphone_home():
+
+    image "/interface/smartphone_background00.webp":
+        align (0.5, 0.5)
+        size (gui.smartphone_width-40, gui.smartphone_height-40)
 
     # button for closure
     imagebutton:

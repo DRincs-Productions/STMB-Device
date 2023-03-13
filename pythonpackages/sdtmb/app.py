@@ -10,6 +10,7 @@ class App():
         id: str,
         name: str,
         icon: str,
+        label_name: str,
         disabled: Union[bool, str] = False,
         hidden: Union[bool, str] = False,
     ):
@@ -18,3 +19,4 @@ class App():
         self.icon = icon
         self.disabled = disabled
         self.hidden = hidden
+        self.label_name = label_name
