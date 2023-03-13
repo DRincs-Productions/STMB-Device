@@ -1,5 +1,6 @@
 define gui.smartphone_height = 1080
 define gui.smartphone_width = 570
+define gui.smartphone_column_app_number = 4
 
 screen smartphone():
 
@@ -51,14 +52,58 @@ screen smartphone():
                         focus_mask True
                         at smartphone_app
 
-                # App name
-                text app.name:
-                    size 20
-                    drop_shadow [(2, 2)]
-                    align (0.5, 0.5)
-                    line_leading 0
-                    line_spacing -2
+                # # App name
+                # text app.name:
+                #     size 20
+                #     drop_shadow [(2, 2)]
+                #     align (0.5, 0.5)
+                #     line_leading 0
+                #     line_spacing -2
 
+    vpgrid:
+        xysize (gui.smartphone_width-60, gui.smartphone_height-300)
+        align (0.5, 0.4)
+        cols gui.smartphone_column_app_number
+        spacing 2
+
+        $ number_app = len(df_apps)
+        $ fraction = number_app % gui.smartphone_column_app_number
+        $ empty_holes_number = gui.smartphone_column_app_number - fraction
+        $ for_number = number_app + empty_holes_number
+
+        # apps
+        if ((for_number % gui.smartphone_column_app_number) == 0):
+            for index in range(for_number):
+                if (len(df_apps) > index):
+                    hbox:
+                        # If the Locations where I am is the same as the Locations where the room is located
+                        button:
+                            xysize (120, 120)
+                            has vbox xsize 75 spacing 0
+                            frame:
+                                xysize (95, 95)
+                                background None
+
+                                # App icon
+                                imagebutton:
+                                    align (0.5, 0.5)
+                                    idle df_apps[index].icon
+                                    # selected (True if cur_room and cur_room.id == room.id else False)
+                                    # sensitive not room.isDisabled(flags)
+                                    focus_mask True
+                                    at smartphone_app
+
+                            # # App name
+                            # text app.name:
+                            #     size 20
+                            #     drop_shadow [(2, 2)]
+                            #     align (0.5, 0.5)
+                            #     line_leading 0
+                            #     line_spacing -2
+                elif (fraction > 0):
+                    # empty_hole
+                    hbox:
+                        text ""
 
     key 'K_ESCAPE' action Hide('smartphone')
     key 'mouseup_3' action Hide('smartphone')
