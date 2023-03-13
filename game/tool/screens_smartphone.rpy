@@ -27,7 +27,36 @@ screen smartphone():
             Hide('smartphone'),
         ]
         focus_mask True
-        at close_smartphone
+        at smartphone_close_button
+
+    # taskbar_apps
+    hbox:
+        align (0.49, 0.95)
+
+        for app in taskbar_apps:
+            # If the Locations where I am is the same as the Locations where the room is located
+            button:
+                frame:
+                    background None
+
+                    # App icon
+                    imagebutton:
+                        align (0.5, 0.0)
+                        idle app.icon
+                        # selected (True if cur_room and cur_room.id == room.id else False)
+                        # sensitive not room.isDisabled(flags)
+                        focus_mask True
+                        at smartphone_app
+
+                    # # App name
+                    # text app.name:
+                    #     size gui.little_text_size
+                    #     drop_shadow [(2, 2)]
+                    #     xalign 0.5
+                    #     text_align 0.5
+                    #     line_leading 0
+                    #     line_spacing -2
+
 
     key 'K_ESCAPE' action Hide('smartphone')
     key 'mouseup_3' action Hide('smartphone')
