@@ -36,26 +36,28 @@ screen smartphone():
         for app in taskbar_apps:
             # If the Locations where I am is the same as the Locations where the room is located
             button:
+                xysize (100, 100)
+                has vbox xsize 75 spacing 0
                 frame:
+                    xysize (85, 85)
                     background None
 
                     # App icon
                     imagebutton:
-                        align (0.5, 0.0)
+                        align (0.5, 0.5)
                         idle app.icon
                         # selected (True if cur_room and cur_room.id == room.id else False)
                         # sensitive not room.isDisabled(flags)
                         focus_mask True
                         at smartphone_app
 
-                    # # App name
-                    # text app.name:
-                    #     size gui.little_text_size
-                    #     drop_shadow [(2, 2)]
-                    #     xalign 0.5
-                    #     text_align 0.5
-                    #     line_leading 0
-                    #     line_spacing -2
+                # App name
+                text app.name:
+                    size 20
+                    drop_shadow [(2, 2)]
+                    align (0.5, 0.5)
+                    line_leading 0
+                    line_spacing -2
 
 
     key 'K_ESCAPE' action Hide('smartphone')
