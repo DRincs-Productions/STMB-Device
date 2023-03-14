@@ -17,17 +17,21 @@ screen smartphone():
     if not smartphone_current_app or not smartphone_current_app.label_name:
         use smartphone_home
     else:
-        $ renpy.call(smartphone_current_app.label_name)
+        # button for go to home
+        imagebutton:
+            align (0.67, 0.3)
+            idle '/interface/button/shutdown.webp'
+            action [
+                SetVariable('smartphone_current_app', None)
+            ]
+            focus_mask True
+            at smartphone_close_button
+
+        use expression smartphone_current_app.label_name
 
     image "/interface/smartphone.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width, gui.smartphone_height)
-
-screen smartphone_home():
-
-    image "/interface/smartphone_background00.webp":
-        align (0.5, 0.5)
-        size (gui.smartphone_width-40, gui.smartphone_height-40)
 
     # button for closure
     imagebutton:
@@ -38,6 +42,12 @@ screen smartphone_home():
         ]
         focus_mask True
         at smartphone_close_button
+
+screen smartphone_home():
+
+    image "/interface/smartphone_background00.webp":
+        align (0.5, 0.5)
+        size (gui.smartphone_width-40, gui.smartphone_height-40)
 
     # taskbar_apps
     hbox:
@@ -87,6 +97,10 @@ screen smartphone_app_button(app, space = 0):
                 align (0.5, 0.5)
                 idle app.icon
                 focus_mask True
+                if app.label_name:
+                    action [
+                        SetVariable('smartphone_current_app', app)
+                    ]
                 at smartphone_app
 
         # # App name

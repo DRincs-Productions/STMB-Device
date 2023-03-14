@@ -17,9 +17,15 @@ define df_apps = [
     App(id="instagram", name=_("Instagram"), icon="icon app instagram"),
     App(id="mail", name=_("Mail"), icon="icon app outlook"),
     App(id="gallery", name=_("Gallery"), icon="icon app photo"),
-    App(id="rewards", name=_("Rewards"), icon="icon app rewards"),
+    App(id="rewards", name=_("Rewards"), icon="icon app rewards", label_name="smartphone_app_rewards"),
 ]
 
 # array editable at runtime, but it is strongly discouraged to pre-enter elements (dictionary contents are based only on saves)
 default apps = [
 ]
+
+screen smartphone_app_rewards():
+
+    image "/interface/smartphone_background01.webp":
+        align (0.5, 0.5)
+        size (gui.smartphone_width-40, gui.smartphone_height-40)
