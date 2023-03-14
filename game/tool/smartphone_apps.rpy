@@ -16,7 +16,8 @@ define df_apps = [
     App(id="games", name=_("Games"), icon="icon app games"),
     App(id="instagram", name=_("Instagram"), icon="icon app instagram", label_name="smartphone_app_instagram"),
     App(id="mail", name=_("Mail"), icon="icon app outlook"),
-    App(id="gallery", name=_("Gallery"), icon="icon app photo"),
+    App(id="photo", name=_("Photo"), icon="icon app photo"),
+    App(id="gallery", name=_("Gallery"), icon="icon app gallery"),
     App(id="rewards", name=_("Rewards"), icon="icon app rewards", label_name="smartphone_app_rewards"),
 ]
 
