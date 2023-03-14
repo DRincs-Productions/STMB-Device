@@ -44,30 +44,8 @@ screen smartphone_home():
         align (0.49, 0.95)
 
         for app in taskbar_apps:
-            # If the Locations where I am is the same as the Locations where the room is located
-            button:
-                xysize (100, 100)
-                has vbox xsize 75 spacing 0
-                frame:
-                    xysize (85, 85)
-                    background None
+            use smartphone_app_button(app)
 
-                    # App icon
-                    imagebutton:
-                        align (0.5, 0.5)
-                        idle app.icon
-                        # selected (True if cur_room and cur_room.id == room.id else False)
-                        # sensitive not room.isDisabled(flags)
-                        focus_mask True
-                        at smartphone_app
-
-                # # App name
-                # text app.name:
-                #     size 20
-                #     drop_shadow [(2, 2)]
-                #     align (0.5, 0.5)
-                #     line_leading 0
-                #     line_spacing -2
 
     vpgrid:
         xysize (gui.smartphone_width-60, gui.smartphone_height-300)
@@ -85,30 +63,8 @@ screen smartphone_home():
             for index in range(for_number):
                 if (len(df_apps) > index):
                     hbox:
-                        # If the Locations where I am is the same as the Locations where the room is located
-                        button:
-                            xysize (120, 120)
-                            has vbox xsize 75 spacing 0
-                            frame:
-                                xysize (95, 95)
-                                background None
+                        use smartphone_app_button(df_apps[index], space = 20)
 
-                                # App icon
-                                imagebutton:
-                                    align (0.5, 0.5)
-                                    idle df_apps[index].icon
-                                    # selected (True if cur_room and cur_room.id == room.id else False)
-                                    # sensitive not room.isDisabled(flags)
-                                    focus_mask True
-                                    at smartphone_app
-
-                            # # App name
-                            # text app.name:
-                            #     size 20
-                            #     drop_shadow [(2, 2)]
-                            #     align (0.5, 0.5)
-                            #     line_leading 0
-                            #     line_spacing -2
                 elif (fraction > 0):
                     # empty_hole
                     hbox:
@@ -116,3 +72,27 @@ screen smartphone_home():
 
     key 'K_ESCAPE' action Hide('smartphone')
     key 'mouseup_3' action Hide('smartphone')
+
+
+screen smartphone_app_button(app, space = 0):
+    button:
+        xysize (100 + space, 100 + space)
+        has vbox xsize 75 spacing 0
+        frame:
+            xysize (85 + space, 85 + space)
+            background None
+
+            # App icon
+            imagebutton:
+                align (0.5, 0.5)
+                idle app.icon
+                focus_mask True
+                at smartphone_app
+
+        # # App name
+        # text app.name:
+        #     size 20
+        #     drop_shadow [(2, 2)]
+        #     align (0.5, 0.5)
+        #     line_leading 0
+        #     line_spacing -2
