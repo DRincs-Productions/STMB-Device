@@ -20,7 +20,7 @@ screen smartphone():
         # button for go to home
         imagebutton:
             align (0.67, 0.3)
-            idle '/interface/button/shutdown.webp'
+            idle '/interface/button/home.webp'
             action [
                 SetVariable('smartphone_current_app', None)
             ]

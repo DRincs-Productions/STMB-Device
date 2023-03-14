@@ -26,6 +26,6 @@ default apps = [
 
 screen smartphone_app_rewards():
 
-    image "/interface/smartphone_background01.webp":
+    image "/interface/app_screen/smartphone_app_rewards.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width-40, gui.smartphone_height-40)
