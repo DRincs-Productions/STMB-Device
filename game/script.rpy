@@ -10,6 +10,13 @@ define e = Character("Eileen")
 
 label start:
 
-    call screen smartphone
+    call screen room_navigation
 
-    return
+screen room_navigation():
+    modal True
+    # Tools
+    frame:
+        yalign 0.0 xalign 0.0
+        hbox:
+            textbutton "SmartPhone" action Show("smartphone")
+            textbutton "Exit" action Quit(confirm=False)
