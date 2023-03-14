@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Optional, Union
 
 
 class App():
@@ -10,7 +10,7 @@ class App():
         id: str,
         name: str,
         icon: str,
-        label_name: str,
+        label_name: Optional[str] = None,
         disabled: Union[bool, str] = False,
         hidden: Union[bool, str] = False,
     ):
