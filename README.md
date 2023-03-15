@@ -1,137 +1,50 @@
-# Debug and Template (VSCode) Ren'py
+# Navigation Quest Time Routine System for Ren'py
 
-This template includes VSCode launchs and extensions for developing Ren'Py projects.
+![Last commit](https://img.shields.io/github/last-commit/DRincs-Productions/STMB-Device)
+![License](https://img.shields.io/github/license/DRincs-Productions/STMB-Device)
+<span class="discord">
+<a href="https://discord.gg/5UFPjP9" title="Discord"><img src="https://img.shields.io/discord/688162156151439536" alt="Discord" /></a>
+</span>
 
-## File
+**IMPORTANT**: is still in development
 
-- `bin/renpy`: macOS/linux script for calling Ren'Py SDK `renpy.sh`
-- `bin/renpy.ps1`: Windows script for calling Ren'Py SDK `renpy.exe`
-- `bin/set-origin.sh`: Git setup helper to configure your local folder to sync to a remote host
-- `.vscode/launch.json`: Launch for launching Ren'Py SDK commands without opening the Ren'Py launcher.
-  - Setup (custom file for remembering your project's SDK path for commands to work)
-  - Run
-  - Force Recompile & Run
-  - Delete Persistent
-  - Lint
-  - Distribute
-- `.vscode/extensions.json`: Optional extensions that VSCode will offer to install for you
-- `.vscode/settings.json`: For Test Formatting, and other settings
-  - [Ren'Py Language](https://marketplace.visualstudio.com/items?itemName=LuqueDaniel.languague-renpy) for syntax highlighting
-  - [Power Shell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) for an easy clickable list of launchs from `.vscode/launch.json`
-  - [Python](https://marketplace.visualstudio.com/items?itemName=spmeesseman.vscode-taskexplorer) for python syntax highlighting
-- `.gitignore`: Git configuration file for ignoring certain file paths and types.
-- `/game/tool/utility.rpy`: Useful functions such as: isNullOrEmpty 
-- `/game/tool/flags.rpy`: Flags System
-- `/game/tool/notify.rpy`: Notify System
-- `/game/tool/log_system.rpy`: Log System
+In order to simplify the update work and avoid errors in saving I created functions that check the correct state of variables by inserting them in [after_load](game/tool/core.rpy#L1) (e.g. after a change to a quest that causes a stage to be blocked, the quest should restart) and an abundant use of define.
 
-## How Run Debug (F5)
+Feel free to contribute, fork this and send a pull request. 😄
 
-![image](https://user-images.githubusercontent.com/67595890/179401467-c8abbc9b-8970-4bad-af86-2b5b31c173a4.png)
+## Documentation
 
+**[Wiki](https://github.com/DRincs-Productions/STMB-Device/wiki)**
 
-### Setup
+## Code snippets ([VSCode](https://code.visualstudio.com/))
 
-( **Necessary only in the beginning** )
+(all begin with `DR_`)
 
-Paste the path to your Ren'Py SDK folder
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/67595890/179365279-0d0b6d45-0048-4a0d-8c6d-9571b9c328f4.gif)
 
-### Run
-
-Select:
-
-- Run or
-- Force Recompile & Run
-
-And Play!
-
-#### For Linux first:
-
-Installing PowerShell on Ubuntu
-https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.3
-```bash
-# Update the list of packages
-sudo apt-get update
-# Install pre-requisite packages.
-sudo apt-get install -y wget apt-transport-https software-properties-common
-# Download the Microsoft repository GPG keys
-wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
-# Register the Microsoft repository GPG keys
-sudo dpkg -i packages-microsoft-prod.deb
-# Update the list of packages after we added packages.microsoft.com
-sudo apt-get update
-# Install PowerShell
-sudo apt-get install -y powershell
-```
-
-give renpy permission
-```bash
-chmod +x renpy.sh
-chmod +x renpy.py
-chmod +x renpy.exe
-chmod +x lib/py3-linux-x86_64/renpy
-chmod +x lib/py3-linux-x86_64/pythonw
-sudo apt-get install -y xdg-utils
-
-```
-
-when opening the text with error info via terminal, write:
-
-```bash
-:q
-
-```
-
-
-if this:
-
-![image](https://user-images.githubusercontent.com/67595890/181924847-19e28398-259a-4ca0-831a-da72410e4612.png)
-
-
-them:
-
-```bash
-sudo apt-get install -y yad
-
-```
-
-#### For microsoft wsl
-https://docs.microsoft.com/it-it/windows/wsl/tutorials/gui-apps
-
-
-## Insert Template in your Project
+## Insert Toolkit in your project
 
 I recommend the following ways to include it in your project:
 
 - [**Pull branch**](#pull-branch) (to **insert** it into your game and **update** it easily)
 - [**Fork**](https://docs.github.com/en/get-started/quickstart/fork-a-repo) (to improve the repo or create a Toolkit based on mine)
-- [Manually](https://github.com/DRincs-Productions/renpy-template-debug-vscode/releases) (not recommended)
+- [Manually](https://github.com/DRincs-Productions/STMB-Device/releases) (not recommended)
 
 ### Pull branch
 
 To **insert** or **update** the Toolkit in your repo with Pull branch I recommend the following procedure:
 
-(only if you want to insert the repo) Create a new empty branch, in the example I'll use **vscode-template**
+(only if you want to insert the repo) Create a new empty branch, in the example I'll use **stmb-device**
 
 ```shell
-git checkout -b vscode-template
-git checkout vscode-template
+git checkout -b stmb-device
+git checkout stmb-device
 git config pull.rebase false
-git pull https://github.com/DRincs-Productions/debug-and-template-VSCode-renpy.git tool-only --allow-unrelated-histories
+git pull https://github.com/DRincs-Productions/STMB-Device.git tool-only --allow-unrelated-histories
 
 ```
 
 At the end make a merge inside the arm of the project.
 
-### Fix Common
-```regex
-    # renpy/common/(.*)
-    old "###########"
-    new "(.*)"
-```
+## Preview
 
-```regex
-    # # renpy/common/(.*)
-    # old "###########"
-    # new "(.*)"
-```
