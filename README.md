@@ -1,4 +1,4 @@
-# Navigation Quest Time Routine System for Ren'py
+# Smart Device (PC and SmartPhone) TV Messenger Browser in Renpy for Ren'py
 
 ![Last commit](https://img.shields.io/github/last-commit/DRincs-Productions/STMB-Device)
 ![License](https://img.shields.io/github/license/DRincs-Productions/STMB-Device)
