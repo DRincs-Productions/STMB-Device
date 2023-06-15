@@ -1,6 +1,9 @@
 init python:
-    from pythonpackages.sdtmb.app import App
+    from pythonpackages.sdtmb.contact import Contact
 
+define taskbar_apps = [
+    Contact(id="mc", icon="mc", character=mc),
+]
 
 screen smartphone_app_contacts():
 
