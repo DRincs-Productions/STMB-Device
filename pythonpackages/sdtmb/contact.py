@@ -1,4 +1,4 @@
-import renpy.exports as renpy
+import renpy as renpy
 
 
 class Contact:
@@ -9,7 +9,7 @@ class Contact:
         # Requirement
         id: str,
         icon: str,
-        character: renpy.Character,
+        character: renpy.character.ADVCharacter,
     ):
         self.id = id
         self.icon = icon
