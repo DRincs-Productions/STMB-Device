@@ -33,10 +33,10 @@ screen smartphone_app_contacts():
 screen contacts_list(contacts):
 
     viewport mousewheel True draggable True id 'contacts_list':
-        has vbox
         align (0.5, 0.5)
         xysize (gui.smartphone_width-60, gui.smartphone_height-300)
         spacing 10
+        has vbox # should always be added at the end to avoid problems
         for contact in contacts:
             use contacts_item(contact.icon, "contact.name")
     # scroll bar
@@ -47,8 +47,8 @@ screen messages_list(contacts):
     viewport mousewheel True draggable True id 'messages_list':
         align (0.5, 0.5)
         xysize (gui.smartphone_width-60, gui.smartphone_height-300)
-        has vbox
         spacing 10
+        has vbox # should always be added at the end to avoid problems
         for contact in contacts:
             use contacts_item(contact.icon, "contact.name", "contact.sms")
     # scroll bar

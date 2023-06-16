@@ -89,7 +89,9 @@ screen smartphone_home():
 screen smartphone_app_button(app, space = 0):
     button:
         xysize (100 + space, 100 + space)
-        has vbox xsize 75 spacing 0
+        has vbox: # should always be added at the end to avoid problems
+            xsize 75
+            spacing 0
         frame:
             xysize (85 + space, 85 + space)
             background None
