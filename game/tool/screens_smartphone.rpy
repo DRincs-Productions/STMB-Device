@@ -1,6 +1,9 @@
 define gui.smartphone_height = 1080
 define gui.smartphone_width = 570
 define gui.smartphone_column_app_number = 4
+define gui.smartphone_app_icon_size = 75
+define gui.smartphone_app_icon_space = 45
+define gui.smartphone_app_icon_space_taskbar = 25
 
 default smartphone_current_app = None 
 
@@ -54,12 +57,12 @@ screen smartphone_home():
         align (0.49, 0.95)
 
         for app in taskbar_apps:
-            use smartphone_app_button(app)
+            use smartphone_app_button(app, space = gui.smartphone_app_icon_space_taskbar)
 
 
     vpgrid mousewheel True draggable True id 'smartphone_home':
         xysize (gui.smartphone_width-60, gui.smartphone_height-300)
-        align (0.5, 0.4)
+        align (0.5, 0.5)
         cols gui.smartphone_column_app_number
         spacing 2
 
@@ -73,7 +76,7 @@ screen smartphone_home():
             for index in range(for_number):
                 if (len(df_apps) > index):
                     hbox:
-                        use smartphone_app_button(df_apps[index], space = 20)
+                        use smartphone_app_button(df_apps[index], space = gui.smartphone_app_icon_space)
 
                 elif (fraction > 0):
                     # empty_hole
@@ -87,30 +90,17 @@ screen smartphone_home():
 
 
 screen smartphone_app_button(app, space = 0):
-    button:
-        xysize (100 + space, 100 + space)
-        has vbox: # should always be added at the end to avoid problems
-            xsize 75
-            spacing 0
-        frame:
-            xysize (85 + space, 85 + space)
-            background None
+    frame:
+        xysize (gui.smartphone_app_icon_size + space, gui.smartphone_app_icon_size + space)
+        background None
 
-            # App icon
-            imagebutton:
-                align (0.5, 0.5)
-                idle app.icon
-                focus_mask True
-                if app.label_name:
-                    action [
-                        SetVariable('smartphone_current_app', app)
-                    ]
-                at smartphone_app
-
-        # # App name
-        # text app.name:
-        #     size 20
-        #     drop_shadow [(2, 2)]
-        #     align (0.5, 0.5)
-        #     line_leading 0
-        #     line_spacing -2
+        # App icon
+        imagebutton:
+            align (0.5, 0.5)
+            idle app.icon
+            focus_mask True
+            if app.label_name:
+                action [
+                    SetVariable('smartphone_current_app', app)
+                ]
+            at smartphone_app(gui.smartphone_app_icon_size)
