@@ -33,9 +33,9 @@ screen smartphone_app_contacts():
 screen contacts_list(contacts):
 
     viewport mousewheel True draggable True id 'contacts_list':
+        has vbox
         align (0.5, 0.5)
         xysize (gui.smartphone_width-60, gui.smartphone_height-300)
-        has vbox
         spacing 10
         for contact in contacts:
             use contacts_item(contact.icon, "contact.name")

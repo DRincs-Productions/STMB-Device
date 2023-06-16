@@ -57,7 +57,7 @@ screen smartphone_home():
             use smartphone_app_button(app)
 
 
-    vpgrid:
+    vpgrid mousewheel True draggable True id 'smartphone_home':
         xysize (gui.smartphone_width-60, gui.smartphone_height-300)
         align (0.5, 0.4)
         cols gui.smartphone_column_app_number
@@ -79,6 +79,8 @@ screen smartphone_home():
                     # empty_hole
                     hbox:
                         text ""
+    # scroll bar
+    vbar value YScrollValue('smartphone_home') style 'menu_vscroll'
 
     key 'K_ESCAPE' action Hide('smartphone')
     key 'mouseup_3' action Hide('smartphone')
