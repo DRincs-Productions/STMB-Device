@@ -46,7 +46,7 @@ class Contact:
         self._hidden = value
 
     def is_hidden(self, flags: dict[str, bool] = {}) -> bool:
-        """ "If hidden is a string: get the value of the flags system"""
+        """If hidden is a string: get the value of the flags system"""
         if isinstance(self.hidden, str):
             return get_flags(self.hidden, flags)
         else:

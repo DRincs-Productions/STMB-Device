@@ -24,7 +24,7 @@ screen contacts_list(contacts):
         has vbox # should always be added at the end to avoid problems
         for contact in contacts:
             if not contact.is_hidden(flags):
-                use contacts_item(contact.icon, contact.character)
+                use contacts_item(contact.icon, contact.name)
     # scroll bar
     vbar value YScrollValue('contacts_list') style 'menu_vscroll'
 
@@ -37,7 +37,7 @@ screen messages_list(contacts):
         has vbox # should always be added at the end to avoid problems
         for contact in contacts:
             if not contact.is_hidden(flags):
-                use contacts_item(contact.icon, contact.character, "contact.sms")
+                use contacts_item(contact.icon, contact.name, "contact.sms")
     # scroll bar
     vbar value YScrollValue('messages_list') style 'menu_vscroll'
 
