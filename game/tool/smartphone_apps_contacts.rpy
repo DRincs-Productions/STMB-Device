@@ -2,8 +2,8 @@ init python:
     from pythonpackages.sdtmb.contact import Contact
 
 define contacts = [
-    Contact(id="a", icon="icon alice", character=a),
-    Contact(id="an", icon="icon ann", character=an),
+    Contact(character=a),
+    Contact(character=an),
 ]
 
 screen smartphone_app_contacts():

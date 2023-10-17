@@ -1,5 +1,5 @@
-from typing import Union
-import renpy as renpy
+from typing import Optional, Union
+import renpy.character as characterType
 
 from pythonpackages.renpy_utility.flags import get_flags
 
@@ -10,13 +10,9 @@ class Contact:
     def __init__(
         self,
         # Requirement
-        id: str,
-        icon: str,
-        character: renpy.character.ADVCharacter,
+        character: characterType.ADVCharacter,
         hidden: Union[bool, str] = False,
     ):
-        self.id = id
-        self.icon = icon
         self.character = character
         self.hidden = hidden
 
@@ -25,27 +21,20 @@ class Contact:
         return self.character.name
 
     @property
-    def id(self) -> str:
-        return self._id
-
-    @id.setter
-    def id(self, value: str):
-        self._id = value
-
-    @property
-    def icon(self) -> str:
-        return self._icon
-
-    @icon.setter
-    def icon(self, value: str):
-        self._icon = value
+    def icon(self) -> Optional[str]:
+        # if ch have a property icon
+        if "icon" in self.character.who_args and isinstance(
+            self.character.who_args["icon"], str
+        ):
+            return self.character.who_args["icon"]
+        return None
 
     @property
-    def character(self) -> renpy.character.ADVCharacter:
+    def character(self) -> characterType.ADVCharacter:
         return self._character
 
     @character.setter
-    def character(self, value: renpy.character.ADVCharacter):
+    def character(self, value: characterType.ADVCharacter):
         self._character = value
 
     @property
