@@ -6,3 +6,7 @@
 	path = game/renpy_utility_tool
 	url = https://github.com/DRincs-Productions/renpy-utility-lib
 	branch = renpy-lib
+[submodule "game/screens_style"]
+	path = game/screens_style
+	url = https://github.com/DRincs-Productions/renpy-screens-style
+	branch = main
