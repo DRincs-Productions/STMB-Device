@@ -10,3 +10,6 @@
 	path = game/screens_style
 	url = https://github.com/DRincs-Productions/renpy-screens-style
 	branch = main
+[submodule "wiki"]
+	path = wiki
+	url = https://github.com/DRincs-Productions/STMB-Device.wiki.git
