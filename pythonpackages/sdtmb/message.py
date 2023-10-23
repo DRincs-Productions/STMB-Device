@@ -82,8 +82,19 @@ class Message:
         self._second = value
 
     @property
-    def time_description(self) -> Optional[str]:
-        return self._time_description
+    def time_description(self) -> str:
+        if not self._time_description is None:
+            return self._time_description
+        else:
+            return (
+                str(self.day)
+                + " "
+                + str(self.hour)
+                + ":"
+                + str(self.minute)
+                + ":"
+                + str(self.second)
+            )
 
     @time_description.setter
     def time_description(self, value: Optional[str]):
