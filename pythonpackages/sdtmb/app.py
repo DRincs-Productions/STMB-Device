@@ -4,7 +4,7 @@ from pythonpackages.renpy_utility.flags import get_flags
 
 
 class App:
-    """"""
+    """App is a class that represent a app in the phone"""
 
     def __init__(
         self,

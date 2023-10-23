@@ -5,7 +5,7 @@ from pythonpackages.renpy_utility.flags import get_flags
 
 
 class Contact:
-    """"""
+    """Contact is a class that represent a contact in the phone"""
 
     def __init__(
         self,
