@@ -2,8 +2,6 @@ from typing import Optional
 from pythonpackages.sdtmb.message_content import MessageContent
 import renpy.character as characterType
 
-from pythonpackages.renpy_utility.flags import get_flags
-
 
 class Message:
     """Message is a class that represent a message in the phone"""
