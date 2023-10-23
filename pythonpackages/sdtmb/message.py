@@ -15,6 +15,7 @@ class Message:
         hour: Optional[int] = None,
         minute: Optional[int] = None,
         second: Optional[int] = None,
+        time_description: Optional[str] = None,
     ):
         self.character = character
         self.message_content = message_content
@@ -22,6 +23,7 @@ class Message:
         self.hour = hour
         self.minute = minute
         self.second = second
+        self.time_description = time_description
 
     @property
     def character(self) -> characterType.ADVCharacter:
@@ -78,3 +80,11 @@ class Message:
     @second.setter
     def second(self, value: Optional[int]):
         self._second = value
+
+    @property
+    def time_description(self) -> Optional[str]:
+        return self._time_description
+
+    @time_description.setter
+    def time_description(self, value: Optional[str]):
+        self._time_description = value
