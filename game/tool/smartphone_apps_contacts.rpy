@@ -19,7 +19,7 @@ screen contacts_list(contacts):
 
     viewport mousewheel True draggable True id 'contacts_list':
         align (0.5, 0.5)
-        xysize (gui.smartphone_width-60, gui.smartphone_height-300)
+        xysize (gui.smartphone_width-150, gui.smartphone_height-350)
         spacing 10
         has vbox # should always be added at the end to avoid problems
         for contact in contacts:
