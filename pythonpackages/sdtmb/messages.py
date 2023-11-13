@@ -12,7 +12,10 @@ class Messages:
         messages: list[Message],
     ):
         self.character = character
-        self.messages = messages
+        # filter messages by character
+        self.messages = list(
+            filter(lambda message: message.character == character, messages)
+        )
 
     @property
     def character(self) -> characterType.ADVCharacter:
