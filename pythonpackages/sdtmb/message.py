@@ -16,6 +16,7 @@ class Message:
         minute: Optional[int] = None,
         second: Optional[int] = None,
         time_description: Optional[str] = None,
+        is_unread: bool = False,
     ):
         self.character = character
         self.message_content = message_content
@@ -24,6 +25,7 @@ class Message:
         self.minute = minute
         self.second = second
         self.time_description = time_description
+        self.is_unread = is_unread
 
     @property
     def character(self) -> characterType.ADVCharacter:
@@ -99,3 +101,11 @@ class Message:
     @time_description.setter
     def time_description(self, value: Optional[str]):
         self._time_description = value
+
+    @property
+    def is_unread(self) -> bool:
+        return self._is_unread
+
+    @is_unread.setter
+    def is_unread(self, value: bool):
+        self._is_unread = value

@@ -14,6 +14,13 @@ screen smartphone_app_contacts():
     
     use contacts_list(contacts)
 
+screen smartphone_app_messages():
+
+    image "/interface/app_screen/smartphone_app_messages.webp":
+        align (0.5, 0.5)
+        size (gui.smartphone_width-40, gui.smartphone_height-40)
+    
+    use messages_list(contacts)
 
 screen contacts_list(contacts):
 
@@ -32,7 +39,7 @@ screen messages_list(contacts):
 
     viewport mousewheel True draggable True id 'messages_list':
         align (0.5, 0.5)
-        xysize (gui.smartphone_width-60, gui.smartphone_height-300)
+        xysize (gui.smartphone_width-60, gui.smartphone_height-350)
         spacing 10
         has vbox # should always be added at the end to avoid problems
         for contact in contacts:

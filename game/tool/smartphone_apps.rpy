@@ -4,7 +4,7 @@ init python:
 
 define taskbar_apps = [
     App(id="phone", name=_("Phone"), icon="icon app phone"),
-    App(id="messages", name=_("Messages"), icon="icon app messages"),
+    App(id="messages", name=_("Messages"), icon="icon app messages", label_name="smartphone_app_messages"),
     App(id="contacts", name=_("Contacts"), icon="icon app contacts", label_name="smartphone_app_contacts"),
     App(id="settings", name=_("Settings"), icon="icon app settings"),
     App(id="browser", name=_("Browser"), icon="icon app firefox"),
