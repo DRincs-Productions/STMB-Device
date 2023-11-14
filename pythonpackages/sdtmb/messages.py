@@ -41,7 +41,7 @@ class Messages:
         return self.messages[-1]
 
     @property
-    def is_unread_message(self) -> bool:
+    def have_unread_message(self) -> bool:
         for message in self.messages:
             if message.is_unread:
                 return True
@@ -52,4 +52,9 @@ class Messages:
         return len(self.messages) > 0
 
     def add_message(self, message: Message):
+        message.is_unread = True
+        self.messages.append(message)
+
+    def add_message_read(self, message: Message):
+        message.is_unread = False
         self.messages.append(message)

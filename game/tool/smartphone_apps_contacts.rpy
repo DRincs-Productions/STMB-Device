@@ -1,9 +1,22 @@
 init python:
     from pythonpackages.sdtmb.contact import Contact
+    from pythonpackages.sdtmb.message import Message
+    from pythonpackages.sdtmb.messages import Messages
+    from pythonpackages.sdtmb.message_content import MessageContent
 
 define contacts = [
     Contact(character=a),
     Contact(character=an),
+]
+
+define messageAlice = MessageContent(text = "Hello")
+
+define messages_list = [
+    Message(
+        character = a,
+        message_content = messageAlice,
+        day = 1,
+    ),
 ]
 
 screen smartphone_app_contacts():
@@ -43,8 +56,9 @@ screen messages_list(contacts):
         spacing 10
         has vbox # should always be added at the end to avoid problems
         for contact in contacts:
-            if not contact.is_hidden(flags):
-                use contacts_item(contact.icon, contact.name, "contact.sms")
+            $ ms = Messages(character = contact.character, messages = messages_list)
+            if not contact.is_hidden(flags) and ms.have_message:
+                use contacts_item(contact.icon, contact.name, ms.last_message.text)
     # scroll bar
     vbar value YScrollValue('messages_list') style 'menu_vscroll'
 

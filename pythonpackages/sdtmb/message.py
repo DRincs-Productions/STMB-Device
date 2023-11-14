@@ -11,7 +11,7 @@ class Message:
         # Requirement
         character: characterType.ADVCharacter,
         message_content: MessageContent,
-        day: Optional[int] = None,
+        day: Optional[int],
         hour: Optional[int] = None,
         minute: Optional[int] = None,
         second: Optional[int] = None,
@@ -109,3 +109,11 @@ class Message:
     @is_unread.setter
     def is_unread(self, value: bool):
         self._is_unread = value
+
+    @property
+    def text(self) -> Optional[str]:
+        return self.message_content.text
+
+    @property
+    def image(self) -> Optional[str]:
+        return self.message_content.image
