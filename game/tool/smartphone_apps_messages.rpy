@@ -5,9 +5,10 @@ init python:
 
 define messageAlice = MessageContent(text = "Hello")
 
-define messages_list = [
+define messagesMc_list = [
     Message(
         character = a,
+        chatId = a,
         message_content = messageAlice,
         day = 1,
     ),
@@ -29,7 +30,7 @@ screen messages_list(contacts):
         spacing 10
         has vbox # should always be added at the end to avoid problems
         for contact in contacts:
-            $ ms = Messages(character = contact.character, messages = messages_list)
+            $ ms = Messages(chatId = contact.character, messages = messagesMc_list)
             if not contact.is_hidden(flags) and ms.have_message:
                 use contacts_item(contact.icon, contact.name, ms.last_message.text)
     # scroll bar
