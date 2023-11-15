@@ -1,6 +1,7 @@
 from typing import Optional
 from pythonpackages.sdtmb.message_content import MessageContent
 import renpy.character as characterType
+from typing import Optional, Union
 
 
 class Message:
@@ -10,6 +11,7 @@ class Message:
         self,
         # Requirement
         character: characterType.ADVCharacter,
+        chatId: Union[str, characterType.ADVCharacter],
         message_content: MessageContent,
         day: Optional[int],
         hour: Optional[int] = None,
@@ -19,6 +21,7 @@ class Message:
         is_unread: bool = False,
     ):
         self.character = character
+        self.chatId = chatId
         self.message_content = message_content
         self.day = day
         self.hour = hour
@@ -42,6 +45,14 @@ class Message:
     @message_content.setter
     def message_content(self, value: MessageContent):
         self._message_content = value
+
+    @property
+    def chatId(self) -> Union[str, characterType.ADVCharacter]:
+        return self._chatId
+
+    @chatId.setter
+    def chatId(self, value: Union[str, characterType.ADVCharacter]):
+        self._chatId = value
 
     @property
     def day(self) -> int:
@@ -117,3 +128,12 @@ class Message:
     @property
     def image(self) -> Optional[str]:
         return self.message_content.image
+
+    @property
+    def icon(self) -> Optional[str]:
+        # if ch have a property icon
+        if "icon" in self.character.who_args and isinstance(
+            self.character.who_args["icon"], str
+        ):
+            return self.character.who_args["icon"]
+        return None

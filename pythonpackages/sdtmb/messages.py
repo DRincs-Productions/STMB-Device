@@ -8,22 +8,20 @@ class Messages:
 
     def __init__(
         self,
-        character: characterType.ADVCharacter,
+        chatId: characterType.ADVCharacter,
         messages: list[Message],
     ):
-        self.character = character
+        self.chatId = chatId
         # filter messages by character
-        self.messages = list(
-            filter(lambda message: message.character == character, messages)
-        )
+        self.messages = list(filter(lambda message: message.chatId == chatId, messages))
 
     @property
-    def character(self) -> characterType.ADVCharacter:
-        return self._character
+    def chatId(self) -> characterType.ADVCharacter:
+        return self._chatId
 
-    @character.setter
-    def character(self, value: characterType.ADVCharacter):
-        self._character = value
+    @chatId.setter
+    def chatId(self, value: characterType.ADVCharacter):
+        self._chatId = value
 
     @property
     def messages(self) -> list[Message]:
