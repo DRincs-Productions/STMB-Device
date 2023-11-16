@@ -4,6 +4,7 @@ init python:
     from pythonpackages.sdtmb.message_content import MessageContent
 
 define messageTest = MessageContent(text = "Hello Hello Hello Hello Hello Hello Hello Hello")
+define messageTest2 = MessageContent(text = "Hello")
 default messages_selected = None
 
 define messagesMc_list = [
@@ -53,6 +54,12 @@ define messagesMc_list = [
         character = mc,
         chatId = a,
         message_content = messageTest,
+        time_description = "day 2",
+    ),
+    Message(
+        character = a,
+        chatId = a,
+        message_content = messageTest2,
         time_description = "day 2",
     ),
 ]
