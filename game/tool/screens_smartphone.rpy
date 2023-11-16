@@ -6,6 +6,7 @@ define gui.smartphone_app_icon_space = 45
 define gui.smartphone_app_icon_space_taskbar = 25
 
 default smartphone_current_app = None 
+default smartphone_back_app = None 
 
 screen smartphone():
 
@@ -25,12 +26,24 @@ screen smartphone():
             align (0.67, 0.3)
             idle '/interface/button/home.webp'
             action [
-                SetVariable('smartphone_current_app', None)
+                SetVariable('smartphone_current_app', None),
+                SetVariable('smartphone_back_app', None)
             ]
             focus_mask True
             at smartphone_close_button
 
         use expression smartphone_current_app.label_name
+    if smartphone_back_app:
+        # button for go to home
+        imagebutton:
+            align (0.67, 0.3)
+            idle '/interface/button/back.webp'
+            action [
+                SetVariable('smartphone_current_app', smartphone_back_app),
+                SetVariable('smartphone_back_app', None)
+            ]
+            focus_mask True
+            at smartphone_close_button
 
     image "/interface/smartphone.webp":
         align (0.5, 0.5)
