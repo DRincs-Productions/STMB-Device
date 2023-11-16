@@ -56,9 +56,9 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
     $ previous_time = None
     for id_d, d in enumerate(dialogue):
         if d.character == smartphone_character:
-            $ message_frame = "phone_send_frame.png"
+            $ message_frame = "/interface/messages/phone_send_frame.webp"
         else:
-            $ message_frame = "phone_received_frame.png"
+            $ message_frame = "/interface/messages/phone_received_frame.webp"
 
         if previous_time != d.time_description:
             $ previous_time = d.time_description
@@ -76,11 +76,6 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
 
             #If this is the first message of the character, show an icon
             if previous_d_who != d.character:
-                if d.character == smartphone_character:
-                    $ message_icon = "phone_send_icon.png"
-                else:
-                    $ message_icon = "phone_received_icon.png"
-
                 add d.icon
 
             vbox:
