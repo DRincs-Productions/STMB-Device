@@ -3,11 +3,18 @@ init python:
     from pythonpackages.sdtmb.messages import Messages
     from pythonpackages.sdtmb.message_content import MessageContent
 
-define messageAlice = MessageContent(text = "Hello")
+define messageAlice = MessageContent(text = "Hello Hello Hello Hello Hello Hello Hello Hello")
+default messages_selected = None
 
 define messagesMc_list = [
     Message(
         character = a,
+        chatId = a,
+        message_content = messageAlice,
+        day = 1,
+    ),
+    Message(
+        character = mc,
         chatId = a,
         message_content = messageAlice,
         day = 1,
@@ -20,18 +27,85 @@ screen smartphone_app_messages():
         align (0.5, 0.5)
         size (gui.smartphone_width-40, gui.smartphone_height-40)
     
-    use messages_list(contacts)
+    use messages_list(contacts, mc)
 
-screen messages_list(contacts):
+screen messages_list(contacts, smartphone_character):
 
     viewport mousewheel True draggable True id 'messages_list':
         align (0.5, 0.5)
         xysize (gui.smartphone_width-60, gui.smartphone_height-350)
         spacing 10
         has vbox # should always be added at the end to avoid problems
-        for contact in contacts:
-            $ ms = Messages(chatId = contact.character, messages = messagesMc_list)
-            if not contact.is_hidden(flags) and ms.have_message:
-                use contacts_item(contact.icon, contact.name, ms.last_message.text)
+        if messages_selected:
+            use smartphone_app_messages_character(messages_selected, mc)
+        else:
+            for contact in contacts:
+                $ ms = Messages(chatId = contact.character, messages = messagesMc_list)
+                if not contact.is_hidden(flags) and ms.have_message:
+                    use contacts_item(contact.icon, contact.name, ms.last_message.text,
+                    [
+                        SetVariable('messages_selected', ms.messages)
+                    ])
     # scroll bar
     vbar value YScrollValue('messages_list') style 'menu_vscroll'
+
+screen smartphone_app_messages_character(dialogue, smartphone_character):
+    style_prefix None
+
+    $ previous_d_who = None
+    $ previous_time = None
+    for id_d, d in enumerate(dialogue):
+        if d.character == smartphone_character:
+            $ message_frame = "phone_send_frame.png"
+        else:
+            $ message_frame = "phone_received_frame.png"
+
+        if previous_time != d.time_description:
+            $ previous_time = d.time_description
+            vbox:
+                xalign 0.5
+                text d.time_description:
+                    color "#000"
+
+        hbox:
+            if d.character == smartphone_character:
+                xsize gui.smartphone_width-60
+            spacing 10
+            if d.character == smartphone_character:
+                box_reverse True
+
+            #If this is the first message of the character, show an icon
+            if previous_d_who != d.character:
+                if d.character == smartphone_character:
+                    $ message_icon = "phone_send_icon.png"
+                else:
+                    $ message_icon = "phone_received_icon.png"
+
+                add d.icon
+
+            vbox:
+                yalign 1.0
+                if d.character == smartphone_character:
+                    xalign 1.0
+                else:
+                    xalign 0.0
+                # if d.character != smartphone_character and previous_d_who != d.character:
+                #     text d.character
+
+                frame:
+                    padding (20,20)
+
+                    background Frame(message_frame, 23,23,23,23)
+                    xsize 350
+
+                    text d.text:
+                        pos (0,0)
+                        xsize 350
+                        color "#000"
+                        slow_cps False
+
+                        if d.character == smartphone_character :
+                            text_align 1.0
+
+                        # id d.what_id
+        $ previous_d_who = d.character
