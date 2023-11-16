@@ -13,20 +13,12 @@ class Message:
         character: characterType.ADVCharacter,
         chatId: Union[str, characterType.ADVCharacter],
         message_content: MessageContent,
-        day: Optional[int],
-        hour: Optional[int] = None,
-        minute: Optional[int] = None,
-        second: Optional[int] = None,
-        time_description: Optional[str] = None,
+        time_description: str,
         is_unread: bool = False,
     ):
         self.character = character
         self.chatId = chatId
         self.message_content = message_content
-        self.day = day
-        self.hour = hour
-        self.minute = minute
-        self.second = second
         self.time_description = time_description
         self.is_unread = is_unread
 
@@ -55,62 +47,11 @@ class Message:
         self._chatId = value
 
     @property
-    def day(self) -> int:
-        if self._day is None:
-            return 0
-        return self._day
-
-    @day.setter
-    def day(self, value: Optional[int]):
-        self._day = value
-
-    @property
-    def hour(self) -> int:
-        if self._hour is None:
-            return 0
-        return self._hour
-
-    @hour.setter
-    def hour(self, value: Optional[int]):
-        self._hour = value
-
-    @property
-    def minute(self) -> int:
-        if self._minute is None:
-            return 0
-        return self._minute
-
-    @minute.setter
-    def minute(self, value: Optional[int]):
-        self._minute = value
-
-    @property
-    def second(self) -> int:
-        if self._second is None:
-            return 0
-        return self._second
-
-    @second.setter
-    def second(self, value: Optional[int]):
-        self._second = value
-
-    @property
     def time_description(self) -> str:
-        if not self._time_description is None:
-            return self._time_description
-        else:
-            return (
-                str(self.day)
-                + " "
-                + str(self.hour)
-                + ":"
-                + str(self.minute)
-                + ":"
-                + str(self.second)
-            )
+        return self._time_description
 
     @time_description.setter
-    def time_description(self, value: Optional[str]):
+    def time_description(self, value: str):
         self._time_description = value
 
     @property

@@ -11,13 +11,13 @@ define messagesMc_list = [
         character = a,
         chatId = a,
         message_content = messageAlice,
-        day = 1,
+        time_description = "day 1",
     ),
     Message(
         character = mc,
         chatId = a,
         message_content = messageAlice,
-        day = 1,
+        time_description = "day 1",
     ),
 ]
 
