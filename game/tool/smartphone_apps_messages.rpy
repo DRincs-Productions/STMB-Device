@@ -66,13 +66,14 @@ define messagesMc_list = [
 
 screen smartphone_app_messages():
 
-    image "/interface/app_screen/smartphone_app_messages.webp":
-        align (0.5, 0.5)
-        size (gui.smartphone_width-40, gui.smartphone_height-40)
-    
-    use messages_list(contacts, mc)
-
-screen messages_list(contacts, smartphone_character):
+    if messages_selected:
+        image "/interface/app_screen/smartphone_app_messages_chat.webp":
+            align (0.5, 0.5)
+            size (gui.smartphone_width-40, gui.smartphone_height-40)
+    else:
+        image "/interface/app_screen/smartphone_app_messages.webp":
+            align (0.5, 0.5)
+            size (gui.smartphone_width-40, gui.smartphone_height-40)
 
     viewport mousewheel True draggable True id 'messages_list':
         align (0.5, 0.5)
@@ -82,18 +83,22 @@ screen messages_list(contacts, smartphone_character):
         if messages_selected:
             use smartphone_app_messages_character(messages_selected, mc)
         else:
-            for contact in contacts:
-                $ ms = Messages(chatId = contact.character, messages = messagesMc_list)
-                if not contact.is_hidden(flags) and ms.have_message:
-                    use contacts_item(contact.icon, contact.name
-                    [
-                        SetVariable('messages_selected', ms.messages),
-                        SetVariable('smartphone_back_label', "smartphone_app_messages_go_back"),
-                    ],
-                    ms.last_message.text
-                    )
+            use messages_list(contacts, mc)
+
     # scroll bar
     vbar value YScrollValue('messages_list') style 'menu_vscroll'
+
+screen messages_list(contacts, smartphone_character):
+    for contact in contacts:
+        $ ms = Messages(chatId = contact.character, messages = messagesMc_list)
+        if not contact.is_hidden(flags) and ms.have_message:
+            use contacts_item(contact.icon, contact.name,
+            [
+                SetVariable('messages_selected', ms.messages),
+                SetVariable('smartphone_back_label', "smartphone_app_messages_go_back"),
+            ],
+            ms.last_message.text
+            )
 
 screen smartphone_app_messages_character(dialogue, smartphone_character):
     style_prefix None
