@@ -85,11 +85,13 @@ screen messages_list(contacts, smartphone_character):
             for contact in contacts:
                 $ ms = Messages(chatId = contact.character, messages = messagesMc_list)
                 if not contact.is_hidden(flags) and ms.have_message:
-                    use contacts_item(contact.icon, contact.name, ms.last_message.text,
+                    use contacts_item(contact.icon, contact.name
                     [
                         SetVariable('messages_selected', ms.messages),
                         SetVariable('smartphone_back_label', "smartphone_app_messages_go_back"),
-                    ])
+                    ],
+                    ms.last_message.text
+                    )
     # scroll bar
     vbar value YScrollValue('messages_list') style 'menu_vscroll'
 
