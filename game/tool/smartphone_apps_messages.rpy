@@ -87,7 +87,8 @@ screen messages_list(contacts, smartphone_character):
                 if not contact.is_hidden(flags) and ms.have_message:
                     use contacts_item(contact.icon, contact.name, ms.last_message.text,
                     [
-                        SetVariable('messages_selected', ms.messages)
+                        SetVariable('messages_selected', ms.messages),
+                        SetVariable('smartphone_back_label', "smartphone_app_messages_go_back"),
                     ])
     # scroll bar
     vbar value YScrollValue('messages_list') style 'menu_vscroll'
@@ -147,3 +148,8 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
 
                         # id d.what_id
         $ previous_d_who = d.character
+
+label smartphone_app_messages_go_back:
+    $ messages_selected = None
+    call screen smartphone
+    return

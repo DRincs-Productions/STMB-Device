@@ -6,7 +6,7 @@ define gui.smartphone_app_icon_space = 45
 define gui.smartphone_app_icon_space_taskbar = 25
 
 default smartphone_current_app = None 
-default smartphone_back_app = None 
+default smartphone_back_label = None 
 
 screen smartphone():
 
@@ -27,20 +27,20 @@ screen smartphone():
             idle '/interface/button/home.webp'
             action [
                 SetVariable('smartphone_current_app', None),
-                SetVariable('smartphone_back_app', None)
+                SetVariable('smartphone_back_label', None)
             ]
             focus_mask True
             at smartphone_close_button
 
         use expression smartphone_current_app.label_name
-    if smartphone_back_app:
+    if smartphone_back_label and renpy.has_label(smartphone_back_label):
         # button for go to home
         imagebutton:
-            align (0.67, 0.3)
+            align (0.67, 0.4)
             idle '/interface/button/back.webp'
             action [
-                SetVariable('smartphone_current_app', smartphone_back_app),
-                SetVariable('smartphone_back_app', None)
+                SetVariable('smartphone_back_label', None),
+                Call(smartphone_back_label)
             ]
             focus_mask True
             at smartphone_close_button
