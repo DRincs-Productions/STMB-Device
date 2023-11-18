@@ -10,13 +10,15 @@ default contact_selected = None
 
 screen smartphone_app_contacts():
 
-    image "/interface/app_screen/smartphone_app_contacts.webp":
-        align (0.5, 0.5)
-        size (gui.smartphone_width-40, gui.smartphone_height-40)
-    
     if contact_selected:
+        image "/interface/app_screen/smartphone_app_contact.webp":
+            align (0.5, 0.5)
+            size (gui.smartphone_width-40, gui.smartphone_height-40)
         use contacts_show(contact_selected)
     else:
+        image "/interface/app_screen/smartphone_app_contacts.webp":
+            align (0.5, 0.5)
+            size (gui.smartphone_width-40, gui.smartphone_height-40)
         use contacts_list(contacts)
 
 screen contacts_list(contacts):
@@ -59,11 +61,16 @@ screen contacts_item(icon, name, my_action = None, sms = None):
 
 screen contacts_show(contact):
     vbox:
-        imagebutton:
-            idle contact.icon
-        text contact.name
+        align (0.5, 0.1)
+        image contact.icon:
+            size (300, 300)
+        text contact.name:
+            color "#000"
+            align (0.5, 0.5)
+            size 50
 
 label smartphone_app_contacts_go_back:
-    $ messages_selected = None
+    $ contact_selected = None
+    $ smartphone_back_label = None
     call screen smartphone
     return

@@ -25,10 +25,15 @@ screen smartphone():
         imagebutton:
             align (0.67, 0.3)
             idle '/interface/button/home.webp'
-            action [
-                SetVariable('smartphone_current_app', None),
-                SetVariable('smartphone_back_label', None)
-            ]
+            if smartphone_back_label and renpy.has_label(smartphone_back_label):
+                action [
+                    SetVariable('smartphone_current_app', None),
+                    Call(smartphone_back_label),
+                ]
+            else:
+                action [
+                    SetVariable('smartphone_current_app', None),
+                ]
             focus_mask True
             at smartphone_close_button
 
@@ -39,7 +44,6 @@ screen smartphone():
             align (0.67, 0.4)
             idle '/interface/button/back.webp'
             action [
-                SetVariable('smartphone_back_label', None),
                 Call(smartphone_back_label)
             ]
             focus_mask True

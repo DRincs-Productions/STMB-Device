@@ -158,5 +158,6 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
 
 label smartphone_app_messages_go_back:
     $ messages_selected = None
+    $ smartphone_back_label = None
     call screen smartphone
     return
