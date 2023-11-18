@@ -3,7 +3,10 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
+init -1:
+    define mc = Character("Player")
+    define a = Character("Alice", icon = "icon alice")
+    define an = Character("Ann", icon = "icon ann")
 
 
 # The game starts here.

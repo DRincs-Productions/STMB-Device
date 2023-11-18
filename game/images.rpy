@@ -11,3 +11,7 @@ image icon app photo = "/interface/app/photo.webp"
 image icon app gallery = "/interface/app/gallery.webp"
 image icon app rewards = "/interface/app/rewards.webp"
 image icon app settings = "/interface/app/settings.webp"
+
+# Contact Icon
+image icon alice = "icon/Alice.webp"
+image icon ann = "icon/Ann.webp"
