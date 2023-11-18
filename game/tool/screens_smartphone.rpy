@@ -24,7 +24,7 @@ screen smartphone():
         # button for go to home
         imagebutton:
             align (0.67, 0.3)
-            idle '/interface/button/home.webp'
+            idle '/stmb_interface/button/home.webp'
             if smartphone_back_label and renpy.has_label(smartphone_back_label):
                 action [
                     SetVariable('smartphone_current_app', None),
@@ -42,21 +42,21 @@ screen smartphone():
         # button for go to home
         imagebutton:
             align (0.67, 0.4)
-            idle '/interface/button/back.webp'
+            idle '/stmb_interface/button/back.webp'
             action [
                 Call(smartphone_back_label)
             ]
             focus_mask True
             at smartphone_close_button
 
-    image "/interface/smartphone.webp":
+    image "/stmb_interface/smartphone.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width, gui.smartphone_height)
 
     # button for closure
     imagebutton:
         align (0.67, 0.18)
-        idle '/interface/button/shutdown.webp'
+        idle '/stmb_interface/button/shutdown.webp'
         action [
             Hide('smartphone'),
         ]
@@ -65,7 +65,7 @@ screen smartphone():
 
 screen smartphone_home():
 
-    image "/interface/smartphone_background00.webp":
+    image "/stmb_interface/smartphone_background00.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width-40, gui.smartphone_height-40)
 

@@ -11,12 +11,12 @@ default contact_selected = None
 screen smartphone_app_contacts():
 
     if contact_selected:
-        image "/interface/app_screen/smartphone_app_contact.webp":
+        image "/stmb_interface/app_screen/smartphone_app_contact.webp":
             align (0.5, 0.5)
             size (gui.smartphone_width-40, gui.smartphone_height-40)
         use contacts_show(contact_selected)
     else:
-        image "/interface/app_screen/smartphone_app_contacts.webp":
+        image "/stmb_interface/app_screen/smartphone_app_contacts.webp":
             align (0.5, 0.5)
             size (gui.smartphone_width-40, gui.smartphone_height-40)
         use contacts_list(contacts)

@@ -1,6 +1,19 @@
 init python:
     from pythonpackages.sdtmb.app import App
 
+# Icon App
+image icon app calculator = "/stmb_interface/app/calculator.webp"
+image icon app contacts = "/stmb_interface/app/contacts.webp"
+image icon app firefox = "/stmb_interface/app/firefox.webp"
+image icon app games = "/stmb_interface/app/games.webp"
+image icon app instagram = "/stmb_interface/app/instagram.webp"
+image icon app messages = "/stmb_interface/app/messages.webp"
+image icon app outlook = "/stmb_interface/app/outlook.webp"
+image icon app phone = "/stmb_interface/app/phone.webp"
+image icon app photo = "/stmb_interface/app/photo.webp"
+image icon app gallery = "/stmb_interface/app/gallery.webp"
+image icon app rewards = "/stmb_interface/app/rewards.webp"
+image icon app settings = "/stmb_interface/app/settings.webp"
 
 define taskbar_apps = [
     App(id="phone", name=_("Phone"), icon="icon app phone"),
@@ -27,18 +40,18 @@ default apps = [
 
 screen smartphone_app_rewards():
 
-    image "/interface/app_screen/smartphone_app_rewards.webp":
+    image "/stmb_interface/app_screen/smartphone_app_rewards.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width-40, gui.smartphone_height-40)
 
 screen smartphone_app_calculator():
 
-    image "/interface/app_screen/smartphone_app_calculator.webp":
+    image "/stmb_interface/app_screen/smartphone_app_calculator.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width-40, gui.smartphone_height-40)
 
 screen smartphone_app_instagram():
 
-    image "/interface/app_screen/smartphone_app_instagram.webp":
+    image "/stmb_interface/app_screen/smartphone_app_instagram.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width-40, gui.smartphone_height-40)

@@ -67,11 +67,11 @@ define messagesMc_list = [
 screen smartphone_app_messages():
 
     if messages_selected:
-        image "/interface/app_screen/smartphone_app_messages_chat.webp":
+        image "/stmb_interface/app_screen/smartphone_app_messages_chat.webp":
             align (0.5, 0.5)
             size (gui.smartphone_width-40, gui.smartphone_height-40)
     else:
-        image "/interface/app_screen/smartphone_app_messages.webp":
+        image "/stmb_interface/app_screen/smartphone_app_messages.webp":
             align (0.5, 0.5)
             size (gui.smartphone_width-40, gui.smartphone_height-40)
 
@@ -107,9 +107,9 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
     $ previous_time = None
     for id_d, d in enumerate(dialogue):
         if d.character == smartphone_character:
-            $ message_frame = "/interface/messages/phone_send_frame.webp"
+            $ message_frame = "/stmb_interface/messages/phone_send_frame.webp"
         else:
-            $ message_frame = "/interface/messages/phone_received_frame.webp"
+            $ message_frame = "/stmb_interface/messages/phone_received_frame.webp"
 
         if previous_time != d.time_description:
             $ previous_time = d.time_description
