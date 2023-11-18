@@ -1,10 +1,3 @@
-define gui.smartphone_height = 1080
-define gui.smartphone_width = 570
-define gui.smartphone_column_app_number = 4
-define gui.smartphone_app_icon_size = 75
-define gui.smartphone_app_icon_space = 45
-define gui.smartphone_app_icon_space_taskbar = 25
-
 default smartphone_current_app = None 
 default smartphone_back_label = None 
 
