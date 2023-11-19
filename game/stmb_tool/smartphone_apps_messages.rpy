@@ -77,7 +77,7 @@ screen smartphone_app_messages():
 
     viewport mousewheel True draggable True id 'messages_list':
         align (0.5, 0.5)
-        xysize (gui.smartphone_width-60, gui.smartphone_height-350)
+        xysize (gui.smartphone_screen_with_space_width, gui.smartphone_height-350)
         spacing 10
         has vbox # should always be added at the end to avoid problems
         if messages_selected:
@@ -86,7 +86,7 @@ screen smartphone_app_messages():
             use messages_list(contacts, mc)
 
     # scroll bar
-    vbar value YScrollValue('messages_list') style 'menu_vscroll'
+    vbar value YScrollValue('messages_list') style 'dr_menu_vscroll'
 
 screen messages_list(contacts, smartphone_character):
     for contact in contacts:
@@ -120,7 +120,7 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
 
         hbox:
             if d.character == smartphone_character:
-                xsize gui.smartphone_width-60
+                xsize gui.smartphone_screen_with_space_width
             spacing 10
             if d.character == smartphone_character:
                 box_reverse True

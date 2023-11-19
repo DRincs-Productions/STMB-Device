@@ -36,7 +36,7 @@ screen contacts_list(contacts):
                     SetVariable('smartphone_back_label', "smartphone_app_contacts_go_back"),
                 ])
     # scroll bar
-    vbar value YScrollValue('contacts_list') style 'menu_vscroll'
+    vbar value YScrollValue('contacts_list') style 'dr_menu_vscroll'
 
 screen contacts_item(icon, name, my_action = None, sms = None):
 
@@ -52,11 +52,11 @@ screen contacts_item(icon, name, my_action = None, sms = None):
             vbox:
                 align (0.5, 0.5)
                 text name:
-                    size gui.big_normal_text_size
+                    size gui.dr_big_normal_text_size
                     color '#000000'
                 if sms:
                     text sms:
-                        size gui.normal_text_size
+                        size gui.dr_normal_text_size
                         color '#000000'
 
 screen contacts_show(contact):

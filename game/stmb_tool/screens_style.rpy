@@ -1,13 +1,3 @@
-define gui.lateralframescroll_ysize = 850
-define gui.little_text_size = 18
-define gui.normal_text_size = 24
-define gui.big_normal_text_size = 28
-define gui.hour_text_size = 60
-
-style menu_vscroll is vscrollbar:
-    xsize 7
-    unscrollable 'hide'
-
 init:
     transform smartphone_close_button:
         xanchor 25
