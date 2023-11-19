@@ -60,7 +60,7 @@ screen smartphone_home():
 
     image "/stmb_interface/smartphone_background00.webp":
         align (0.5, 0.5)
-        size (gui.smartphone_width-40, gui.smartphone_height-40)
+        size (gui.smartphone_screen_width, gui.smartphone_screen_height)
 
     # taskbar_apps
     hbox:

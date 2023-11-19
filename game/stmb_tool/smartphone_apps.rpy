@@ -42,16 +42,16 @@ screen smartphone_app_rewards():
 
     image "/stmb_interface/app_screen/smartphone_app_rewards.webp":
         align (0.5, 0.5)
-        size (gui.smartphone_width-40, gui.smartphone_height-40)
+        size (gui.smartphone_screen_width, gui.smartphone_screen_height)
 
 screen smartphone_app_calculator():
 
     image "/stmb_interface/app_screen/smartphone_app_calculator.webp":
         align (0.5, 0.5)
-        size (gui.smartphone_width-40, gui.smartphone_height-40)
+        size (gui.smartphone_screen_width, gui.smartphone_screen_height)
 
 screen smartphone_app_instagram():
 
     image "/stmb_interface/app_screen/smartphone_app_instagram.webp":
         align (0.5, 0.5)
-        size (gui.smartphone_width-40, gui.smartphone_height-40)
+        size (gui.smartphone_screen_width, gui.smartphone_screen_height)

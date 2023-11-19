@@ -69,11 +69,11 @@ screen smartphone_app_messages():
     if messages_selected:
         image "/stmb_interface/app_screen/smartphone_app_messages_chat.webp":
             align (0.5, 0.5)
-            size (gui.smartphone_width-40, gui.smartphone_height-40)
+            size (gui.smartphone_screen_width, gui.smartphone_screen_height)
     else:
         image "/stmb_interface/app_screen/smartphone_app_messages.webp":
             align (0.5, 0.5)
-            size (gui.smartphone_width-40, gui.smartphone_height-40)
+            size (gui.smartphone_screen_width, gui.smartphone_screen_height)
 
     viewport mousewheel True draggable True id 'messages_list':
         align (0.5, 0.5)

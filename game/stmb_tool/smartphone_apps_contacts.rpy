@@ -13,12 +13,12 @@ screen smartphone_app_contacts():
     if contact_selected:
         image "/stmb_interface/app_screen/smartphone_app_contact.webp":
             align (0.5, 0.5)
-            size (gui.smartphone_width-40, gui.smartphone_height-40)
+            size (gui.smartphone_screen_width, gui.smartphone_screen_height)
         use contacts_show(contact_selected)
     else:
         image "/stmb_interface/app_screen/smartphone_app_contacts.webp":
             align (0.5, 0.5)
-            size (gui.smartphone_width-40, gui.smartphone_height-40)
+            size (gui.smartphone_screen_width, gui.smartphone_screen_height)
         use contacts_list(contacts)
 
 screen contacts_list(contacts):
