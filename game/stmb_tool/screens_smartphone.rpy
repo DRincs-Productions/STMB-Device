@@ -28,7 +28,7 @@ screen smartphone():
                     SetVariable('smartphone_current_app', None),
                 ]
             focus_mask True
-            at smartphone_close_button
+            at smartphone_nav_button
 
         use expression smartphone_current_app.label_name
     if smartphone_back_label and renpy.has_label(smartphone_back_label):
@@ -40,7 +40,7 @@ screen smartphone():
                 Call(smartphone_back_label)
             ]
             focus_mask True
-            at smartphone_close_button
+            at smartphone_nav_button
 
     image "/stmb_interface/smartphone.webp":
         align (0.5, 0.5)
@@ -54,7 +54,7 @@ screen smartphone():
             Hide('smartphone'),
         ]
         focus_mask True
-        at smartphone_close_button
+        at smartphone_nav_button
 
 screen smartphone_home():
 
