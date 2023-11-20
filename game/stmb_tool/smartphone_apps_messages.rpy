@@ -77,7 +77,7 @@ screen smartphone_app_messages():
 
     viewport mousewheel True draggable True id 'messages_list':
         align (0.5, 0.5)
-        xysize (gui.smartphone_screen_with_space_width, gui.smartphone_height-350)
+        xysize (gui.smartphone_screen_with_space_width, gui.smartphone_screen_contacts_height)
         spacing 10
         has vbox # should always be added at the end to avoid problems
         if messages_selected:
