@@ -34,10 +34,6 @@ define df_apps = [
     App(id="rewards", name=_("Rewards"), icon="icon app rewards", label_name="smartphone_app_rewards"),
 ]
 
-# array editable at runtime, but it is strongly discouraged to pre-enter elements (dictionary contents are based only on saves)
-default apps = [
-]
-
 screen smartphone_app_rewards():
 
     image "/stmb_interface/app_screen/smartphone_app_rewards.webp":
