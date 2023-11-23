@@ -119,5 +119,3 @@ define df_messages_mc_list = [
         time_description = "day 2",
     ),
 ]
-
-default messages_mc_list = []
