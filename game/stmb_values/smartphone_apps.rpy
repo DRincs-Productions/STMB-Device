@@ -1,6 +1,8 @@
 init python:
     from pythonpackages.sdtmb.app import App
     from pythonpackages.sdtmb.contact import Contact
+    from pythonpackages.sdtmb.message_content import MessageContent
+    from pythonpackages.sdtmb.message import Message
 
 # Icon App
 image icon app calculator = "/stmb_interface/app/calculator.webp"
@@ -56,4 +58,64 @@ screen smartphone_app_instagram():
 define contacts = [
     Contact(character=a),
     Contact(character=an),
+]
+
+define messageTest = MessageContent(text = "Hello Hello Hello Hello Hello Hello Hello Hello")
+define messageTest2 = MessageContent(text = "Hello")
+
+define messages_mc_list = [
+    Message(
+        character = a,
+        chatId = a,
+        message_content = messageTest,
+        time_description = "day 1",
+    ),
+    Message(
+        character = mc,
+        chatId = a,
+        message_content = messageTest,
+        time_description = "day 1",
+    ),
+    Message(
+        character = mc,
+        chatId = a,
+        message_content = messageTest,
+        time_description = "day 1",
+    ),
+    Message(
+        character = mc,
+        chatId = a,
+        message_content = messageTest,
+        time_description = "day 1",
+    ),
+    Message(
+        character = mc,
+        chatId = a,
+        message_content = messageTest,
+        time_description = "day 1",
+    ),
+    Message(
+        character = mc,
+        chatId = a,
+        message_content = messageTest,
+        time_description = "day 1",
+    ),
+    Message(
+        character = mc,
+        chatId = a,
+        message_content = messageTest,
+        time_description = "day 1",
+    ),
+    Message(
+        character = mc,
+        chatId = a,
+        message_content = messageTest,
+        time_description = "day 2",
+    ),
+    Message(
+        character = a,
+        chatId = a,
+        message_content = messageTest2,
+        time_description = "day 2",
+    ),
 ]

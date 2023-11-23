@@ -1,68 +1,7 @@
 init python:
-    from pythonpackages.sdtmb.message import Message
     from pythonpackages.sdtmb.messages import Messages
-    from pythonpackages.sdtmb.message_content import MessageContent
 
-define messageTest = MessageContent(text = "Hello Hello Hello Hello Hello Hello Hello Hello")
-define messageTest2 = MessageContent(text = "Hello")
 default messages_selected = None
-
-define messagesMc_list = [
-    Message(
-        character = a,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 2",
-    ),
-    Message(
-        character = a,
-        chatId = a,
-        message_content = messageTest2,
-        time_description = "day 2",
-    ),
-]
 
 screen smartphone_app_messages():
 
@@ -83,14 +22,14 @@ screen smartphone_app_messages():
         if messages_selected:
             use smartphone_app_messages_character(messages_selected, mc)
         else:
-            use messages_list(contacts, mc)
+            use messages_list(contacts, mc, messages_mc_list)
 
     # scroll bar
     vbar value YScrollValue('messages_list') style 'dr_menu_vscroll'
 
-screen messages_list(contacts, smartphone_character):
+screen messages_list(contacts, smartphone_character, messages_items):
     for contact in contacts:
-        $ ms = Messages(chatId = contact.character, messages = messagesMc_list)
+        $ ms = Messages(chatId = contact.character, messages = messages_items)
         if not contact.is_hidden(flags) and ms.have_message:
             use contacts_item(contact.icon, contact.name,
             [
