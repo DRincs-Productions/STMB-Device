@@ -22,7 +22,7 @@ screen smartphone_app_messages():
         if messages_selected:
             use smartphone_app_messages_character(messages_selected, mc)
         else:
-            use messages_list(contacts, mc, df_messages_mc_list | messages_mc_list)
+            use messages_list(contacts, mc, df_messages_mc_list + messages_mc_list)
 
     # scroll bar
     vbar value YScrollValue('messages_list') style 'dr_menu_vscroll'
