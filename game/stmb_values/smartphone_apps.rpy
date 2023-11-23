@@ -63,7 +63,7 @@ define contacts = [
 define messageTest = MessageContent(text = "Hello Hello Hello Hello Hello Hello Hello Hello")
 define messageTest2 = MessageContent(text = "Hello")
 
-define messages_mc_list = [
+define df_messages_mc_list = [
     Message(
         character = a,
         chatId = a,
@@ -119,3 +119,5 @@ define messages_mc_list = [
         time_description = "day 2",
     ),
 ]
+
+default messages_mc_list = []

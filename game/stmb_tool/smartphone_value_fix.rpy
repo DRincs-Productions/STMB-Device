@@ -7,6 +7,12 @@ init -1 python:
         apps = []
     if not "contacts" in locals() | globals():
         contacts = []
+    if not "messages_mc_list" in locals() | globals():
+        messages_mc_list = []
+    if not "df_messages_mc_list" in locals() | globals():
+        df_messages_mc_list = []
 
 # array editable at runtime, but it is strongly discouraged to pre-enter elements (dictionary contents are based only on saves)
 default apps = []
+
+default messages_mc_list = []
