@@ -19,7 +19,7 @@ screen smartphone_app_messages():
         xysize (gui.smartphone_screen_with_space_width, gui.smartphone_screen_contacts_height)
         spacing 10
         has vbox # should always be added at the end to avoid problems
-        if messages_selected:
+        if last_back(smartphone_back_list) == "messages_selected" and messages_selected:
             use smartphone_app_messages_character(messages_selected, mc)
         else:
             use messages_list(contacts, mc, df_messages_mc_list + messages_mc_list)
