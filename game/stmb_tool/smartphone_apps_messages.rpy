@@ -81,11 +81,11 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
                     padding (20,20)
 
                     background Frame(message_frame, 23,23,23,23)
-                    xsize 350
+                    xsize gui.smartphone_screen_contacts_width
 
                     text d.text:
                         pos (0,0)
-                        xsize 350
+                        xsize gui.smartphone_screen_contacts_width
                         color "#000"
                         slow_cps False
 
