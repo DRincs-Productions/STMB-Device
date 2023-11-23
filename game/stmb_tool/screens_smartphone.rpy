@@ -18,26 +18,21 @@ screen smartphone():
         imagebutton:
             align (0.67, 0.3)
             idle '/stmb_interface/button/home.webp'
-            if smartphone_back_label and renpy.has_label(smartphone_back_label):
-                action [
-                    SetVariable('smartphone_current_app', None),
-                    Call(smartphone_back_label),
-                ]
-            else:
-                action [
-                    SetVariable('smartphone_current_app', None),
-                ]
+            action [
+                Function(go_to_home, smartphone_back_list),
+                SetVariable('smartphone_current_app', None),
+            ]
             focus_mask True
             at smartphone_nav_button
 
         use expression smartphone_current_app.label_name
-    if smartphone_back_label and renpy.has_label(smartphone_back_label):
+    if is_back_list_empty(smartphone_back_list):
         # button for go to home
         imagebutton:
             align (0.67, 0.4)
             idle '/stmb_interface/button/back.webp'
             action [
-                Call(smartphone_back_label)
+                Function(go_to_back, smartphone_back_list),
             ]
             focus_mask True
             at smartphone_nav_button
