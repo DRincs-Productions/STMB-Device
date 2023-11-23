@@ -1,10 +1,3 @@
-define gui.smartphone_height = 1080
-define gui.smartphone_width = 570
-define gui.smartphone_column_app_number = 4
-define gui.smartphone_app_icon_size = 75
-define gui.smartphone_app_icon_space = 45
-define gui.smartphone_app_icon_space_taskbar = 25
-
 default smartphone_current_app = None 
 default smartphone_back_label = None 
 
@@ -24,7 +17,7 @@ screen smartphone():
         # button for go to home
         imagebutton:
             align (0.67, 0.3)
-            idle '/interface/button/home.webp'
+            idle '/stmb_interface/button/home.webp'
             if smartphone_back_label and renpy.has_label(smartphone_back_label):
                 action [
                     SetVariable('smartphone_current_app', None),
@@ -35,39 +28,39 @@ screen smartphone():
                     SetVariable('smartphone_current_app', None),
                 ]
             focus_mask True
-            at smartphone_close_button
+            at smartphone_nav_button
 
         use expression smartphone_current_app.label_name
     if smartphone_back_label and renpy.has_label(smartphone_back_label):
         # button for go to home
         imagebutton:
             align (0.67, 0.4)
-            idle '/interface/button/back.webp'
+            idle '/stmb_interface/button/back.webp'
             action [
                 Call(smartphone_back_label)
             ]
             focus_mask True
-            at smartphone_close_button
+            at smartphone_nav_button
 
-    image "/interface/smartphone.webp":
+    image "/stmb_interface/smartphone.webp":
         align (0.5, 0.5)
         size (gui.smartphone_width, gui.smartphone_height)
 
     # button for closure
     imagebutton:
         align (0.67, 0.18)
-        idle '/interface/button/shutdown.webp'
+        idle '/stmb_interface/button/shutdown.webp'
         action [
             Hide('smartphone'),
         ]
         focus_mask True
-        at smartphone_close_button
+        at smartphone_nav_button
 
 screen smartphone_home():
 
-    image "/interface/smartphone_background00.webp":
+    image "/stmb_interface/smartphone_background00.webp":
         align (0.5, 0.5)
-        size (gui.smartphone_width-40, gui.smartphone_height-40)
+        size (gui.smartphone_screen_width, gui.smartphone_screen_height)
 
     # taskbar_apps
     hbox:
@@ -78,7 +71,7 @@ screen smartphone_home():
 
 
     vpgrid mousewheel True draggable True id 'smartphone_home':
-        xysize (gui.smartphone_width-60, gui.smartphone_height-300)
+        xysize (gui.smartphone_screen_with_space_width, gui.smartphone_screen_app_height)
         align (0.5, 0.5)
         cols gui.smartphone_column_app_number
         spacing 2
@@ -100,7 +93,7 @@ screen smartphone_home():
                     hbox:
                         text ""
     # scroll bar
-    vbar value YScrollValue('smartphone_home') style 'menu_vscroll'
+    vbar value YScrollValue('smartphone_home') style 'dr_menu_vscroll'
 
     key 'K_ESCAPE' action Hide('smartphone')
     key 'mouseup_3' action Hide('smartphone')

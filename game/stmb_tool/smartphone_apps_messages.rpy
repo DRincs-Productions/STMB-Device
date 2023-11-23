@@ -1,96 +1,35 @@
 init python:
-    from pythonpackages.sdtmb.message import Message
     from pythonpackages.sdtmb.messages import Messages
-    from pythonpackages.sdtmb.message_content import MessageContent
 
-define messageTest = MessageContent(text = "Hello Hello Hello Hello Hello Hello Hello Hello")
-define messageTest2 = MessageContent(text = "Hello")
 default messages_selected = None
-
-define messagesMc_list = [
-    Message(
-        character = a,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 1",
-    ),
-    Message(
-        character = mc,
-        chatId = a,
-        message_content = messageTest,
-        time_description = "day 2",
-    ),
-    Message(
-        character = a,
-        chatId = a,
-        message_content = messageTest2,
-        time_description = "day 2",
-    ),
-]
 
 screen smartphone_app_messages():
 
     if messages_selected:
-        image "/interface/app_screen/smartphone_app_messages_chat.webp":
+        image "/stmb_interface/app_screen/smartphone_app_messages_chat.webp":
             align (0.5, 0.5)
-            size (gui.smartphone_width-40, gui.smartphone_height-40)
+            size (gui.smartphone_screen_width, gui.smartphone_screen_height)
     else:
-        image "/interface/app_screen/smartphone_app_messages.webp":
+        image "/stmb_interface/app_screen/smartphone_app_messages.webp":
             align (0.5, 0.5)
-            size (gui.smartphone_width-40, gui.smartphone_height-40)
+            size (gui.smartphone_screen_width, gui.smartphone_screen_height)
 
     viewport mousewheel True draggable True id 'messages_list':
         align (0.5, 0.5)
-        xysize (gui.smartphone_width-60, gui.smartphone_height-350)
+        xysize (gui.smartphone_screen_with_space_width, gui.smartphone_screen_contacts_height)
         spacing 10
         has vbox # should always be added at the end to avoid problems
         if messages_selected:
             use smartphone_app_messages_character(messages_selected, mc)
         else:
-            use messages_list(contacts, mc)
+            use messages_list(contacts, mc, df_messages_mc_list + messages_mc_list)
 
     # scroll bar
-    vbar value YScrollValue('messages_list') style 'menu_vscroll'
+    vbar value YScrollValue('messages_list') style 'dr_menu_vscroll'
 
-screen messages_list(contacts, smartphone_character):
+screen messages_list(contacts, smartphone_character, messages_items):
     for contact in contacts:
-        $ ms = Messages(chatId = contact.character, messages = messagesMc_list)
+        $ ms = Messages(chatId = contact.character, messages = messages_items)
         if not contact.is_hidden(flags) and ms.have_message:
             use contacts_item(contact.icon, contact.name,
             [
@@ -107,9 +46,9 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
     $ previous_time = None
     for id_d, d in enumerate(dialogue):
         if d.character == smartphone_character:
-            $ message_frame = "/interface/messages/phone_send_frame.webp"
+            $ message_frame = "/stmb_interface/messages/phone_send_frame.webp"
         else:
-            $ message_frame = "/interface/messages/phone_received_frame.webp"
+            $ message_frame = "/stmb_interface/messages/phone_received_frame.webp"
 
         if previous_time != d.time_description:
             $ previous_time = d.time_description
@@ -120,7 +59,7 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
 
         hbox:
             if d.character == smartphone_character:
-                xsize gui.smartphone_width-60
+                xsize gui.smartphone_screen_with_space_width
             spacing 10
             if d.character == smartphone_character:
                 box_reverse True
@@ -142,11 +81,11 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
                     padding (20,20)
 
                     background Frame(message_frame, 23,23,23,23)
-                    xsize 350
+                    xsize gui.smartphone_screen_contacts_width
 
                     text d.text:
                         pos (0,0)
-                        xsize 350
+                        xsize gui.smartphone_screen_contacts_width
                         color "#000"
                         slow_cps False
 
