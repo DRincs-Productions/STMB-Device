@@ -5,7 +5,7 @@ default messages_selected = None
 
 screen smartphone_app_messages():
 
-    if messages_selected:
+    if last_back(smartphone_back_list) == "messages_selected" and messages_selected:
         image "/stmb_interface/app_screen/smartphone_app_messages_chat.webp":
             align (0.5, 0.5)
             size (gui.smartphone_screen_width, gui.smartphone_screen_height)
@@ -34,7 +34,7 @@ screen messages_list(contacts, smartphone_character, messages_items):
             use contacts_item(contact.icon, contact.name,
             [
                 SetVariable('messages_selected', ms.messages),
-                SetVariable('smartphone_back_label', "smartphone_app_messages_go_back"),
+                Function(add_back, smartphone_back_list, 'messages_selected'),
             ],
             ms.last_message.text
             )
@@ -94,9 +94,3 @@ screen smartphone_app_messages_character(dialogue, smartphone_character):
 
                         # id d.what_id
         $ previous_d_who = d.character
-
-label smartphone_app_messages_go_back:
-    $ messages_selected = None
-    $ smartphone_back_label = None
-    call screen smartphone
-    return
