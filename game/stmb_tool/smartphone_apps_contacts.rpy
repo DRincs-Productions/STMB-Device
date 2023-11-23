@@ -1,11 +1,3 @@
-init python:
-    from pythonpackages.sdtmb.contact import Contact
-
-define contacts = [
-    Contact(character=a),
-    Contact(character=an),
-]
-
 default contact_selected = None
 
 screen smartphone_app_contacts():
@@ -63,11 +55,11 @@ screen contacts_show(contact):
     vbox:
         align (0.5, 0.1)
         image contact.icon:
-            size (300, 300)
+            size (gui.smartphone_contact_big_icon_size, gui.smartphone_contact_big_icon_size)
         text contact.name:
             color "#000"
             align (0.5, 0.5)
-            size 50
+            size gui.nqtr_hour_text_size
 
 label smartphone_app_contacts_go_back:
     $ contact_selected = None

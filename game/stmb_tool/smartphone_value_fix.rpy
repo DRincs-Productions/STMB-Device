@@ -5,6 +5,8 @@ init -1 python:
         df_apps = []
     if not "apps" in locals() | globals():
         apps = []
+    if not "contacts" in locals() | globals():
+        contacts = []
 
 # array editable at runtime, but it is strongly discouraged to pre-enter elements (dictionary contents are based only on saves)
 default apps = []

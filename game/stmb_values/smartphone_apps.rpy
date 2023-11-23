@@ -1,5 +1,6 @@
 init python:
     from pythonpackages.sdtmb.app import App
+    from pythonpackages.sdtmb.contact import Contact
 
 # Icon App
 image icon app calculator = "/stmb_interface/app/calculator.webp"
@@ -51,3 +52,8 @@ screen smartphone_app_instagram():
     image "/stmb_interface/app_screen/smartphone_app_instagram.webp":
         align (0.5, 0.5)
         size (gui.smartphone_screen_width, gui.smartphone_screen_height)
+
+define contacts = [
+    Contact(character=a),
+    Contact(character=an),
+]
