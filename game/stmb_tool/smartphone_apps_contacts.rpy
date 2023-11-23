@@ -2,7 +2,7 @@ default contact_selected = None
 
 screen smartphone_app_contacts():
 
-    if contact_selected:
+    if last_back(smartphone_back_list) == "contact_selected" and contact_selected:
         image "/stmb_interface/app_screen/smartphone_app_contact.webp":
             align (0.5, 0.5)
             size (gui.smartphone_screen_width, gui.smartphone_screen_height)
@@ -25,7 +25,7 @@ screen contacts_list(contacts):
                 use contacts_item(contact.icon, contact.name,
                 [
                     SetVariable('contact_selected', contact),
-                    SetVariable('smartphone_back_label', "smartphone_app_contacts_go_back"),
+                    Function(add_back, smartphone_back_list, 'contact_selected'),
                 ])
     # scroll bar
     vbar value YScrollValue('contacts_list') style 'dr_menu_vscroll'
@@ -60,9 +60,3 @@ screen contacts_show(contact):
             color "#000"
             align (0.5, 0.5)
             size gui.nqtr_hour_text_size
-
-label smartphone_app_contacts_go_back:
-    $ contact_selected = None
-    $ smartphone_back_label = None
-    call screen smartphone
-    return
