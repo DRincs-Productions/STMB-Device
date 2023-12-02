@@ -22,6 +22,18 @@ screen tv(home_screen, background, my_align, my_size):
             align my_align
             size my_size
 
-    image background
+    image background:
+        size (config.screen_width, config.screen_height)
 
-# screen TV_remote_control(channel_list):
+    use tv_remote_control
+
+screen tv_remote_control():
+    image "/stmb_interface/remote_control.webp":
+        size (250, 600)
+    image "gui triangular_button":
+        size (32, 32)
+        align (0.09, 0.31)
+    image "gui triangular_button":
+        size (32, 32)
+        align (0.024, 0.31)
+        rotate (180)
