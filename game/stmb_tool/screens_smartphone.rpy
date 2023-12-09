@@ -3,13 +3,10 @@ default smartphone_back_label = None
 
 screen smartphone():
 
-    tag menu
-
     ## Avoid predicting this screen, as it can be very large.
     predict False
 
     modal True
-    style_prefix "game_menu"
 
     if not smartphone_current_app or not smartphone_current_app.label_name:
         use smartphone_home
