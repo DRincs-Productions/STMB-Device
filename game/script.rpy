@@ -23,9 +23,9 @@ screen room_navigation():
         hbox:
             textbutton "SmartPhone" action Show("smartphone")
             textbutton "TV" action Show("tv", 
-                home_screen="/stmb_interface/tv.webp",
+                home_screen="/stmb_interface/tv_screen_home.webp",
                 background="/stmb_interface/tv.webp",
-                my_align=(0,0),
-                my_size=(0,0)
+                my_align=(0.45, 0.07),
+                my_size=(900, 490)
             )
             textbutton "Exit" action Quit(confirm=False)
