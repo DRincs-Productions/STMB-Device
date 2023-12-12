@@ -48,4 +48,4 @@ screen tv_remote_control(my_align = (0, 0)):
                 Hide('tv'),
             ]
             focus_mask True
-            at tv_remote_control_litled_button
+            at tv_remote_control_small_button
